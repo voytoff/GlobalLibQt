@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.20)
 
 project(GlobalLib LANGUAGES CXX)
 
@@ -13,12 +13,12 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 add_library(GlobalLib SHARED
   GlobalLib_global.h
-  globallib.cpp
-  globallib.h
+  globallib.h globallib.cpp
   lib.h lib.cpp
-  iexpobject.h iexpobject.cpp
+  iexpobject.h
+  ichannelarray.h
+  IChannelBlock.h
 )
 
 target_link_libraries(GlobalLib PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-
 target_compile_definitions(GlobalLib PRIVATE GLOBALLIB_LIBRARY)

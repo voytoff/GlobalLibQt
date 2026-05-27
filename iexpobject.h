@@ -1,12 +1,23 @@
 #ifndef IEXPOBJECT_H
 #define IEXPOBJECT_H
 
+#include "ichannelarray.h"
 #include <QtPlugin>
 
 class IExpObject {
 public:
   virtual ~IExpObject() {}
-  virtual double convert(QByteArray data) = 0;
+
+  IChannelArray* channels = nullptr;
+
+public slots:
+  virtual void load() {};
+  virtual void close() {};
+
+  signals:
+  void channelBlockRead(QString fileName, int channelID, QString name);
+  void dataBlockRead(QString fileName, int channelID, int blockID, int size);
+  void fileLoaded(int index, QString fileName); // Загружен очередной файл
 };
 
 // Associate the class with a unique identifier

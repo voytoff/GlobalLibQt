@@ -1,10 +1,11 @@
 #ifndef IEXPOBJECT_H
 #define IEXPOBJECT_H
 
-#include "ichannelarray.h"
 #include <QtPlugin>
+#include "ichannelarray.h"
 
-class IExpObject {
+class IExpObject
+{
 public:
   virtual ~IExpObject() {}
 
@@ -14,7 +15,7 @@ public slots:
   virtual void load() {};
   virtual void close() {};
 
-  signals:
+signals:
   void channelBlockRead(QString fileName, int channelID, QString name);
   void dataBlockRead(QString fileName, int channelID, int blockID, int size);
   void fileLoaded(int index, QString fileName); // Загружен очередной файл

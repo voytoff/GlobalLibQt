@@ -1,5 +1,4 @@
-cmake_minimum_required(VERSION 3.20)
-
+cmake_minimum_required(VERSION 3.17)
 project(GlobalLib LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
@@ -17,8 +16,14 @@ add_library(GlobalLib SHARED
   lib.h lib.cpp
   iexpobject.h
   ichannelarray.h
-  IChannelBlock.h
+  ichannelblock.h
+  parameter.h parameter.cpp
+  file.cpp file.h
+  datablockarray.cpp datablockarray.h
+  #channelblock.cpp channelblock.h
 )
 
+# Link your executable against Qt Core
 target_link_libraries(GlobalLib PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-target_compile_definitions(GlobalLib PRIVATE GLOBALLIB_LIBRARY)
+#target_link_libraries(GlobalLib PRIVATE Qt6::Core)
+target_compile_definitions(GlobalLib PUBLIC GLOBALLIB_LIBRARY)

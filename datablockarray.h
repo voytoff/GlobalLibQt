@@ -5,8 +5,7 @@
 #include "parameter.h"
 #include <QList>
 
-class GLOBALLIB_EXPORT DataBlockArray : public QList<Parameter>
-{
+class GLOBALLIB_EXPORT DataBlockArray : public QList<Parameter> {
 public:
   DataBlockArray(QString name, int frequency, int persecond);
   QString name;

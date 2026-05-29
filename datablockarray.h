@@ -7,10 +7,11 @@
 
 class GLOBALLIB_EXPORT DataBlockArray : public QList<Parameter> {
 public:
-  DataBlockArray(QString name, int frequency, int persecond);
+  DataBlockArray(QString name, int frequency, int persecond, QString unit);
   QString name;
   int frequency;
   int persecond;
+  QString unit;
   void setData(QVector<Parameter*> data);
 };
 

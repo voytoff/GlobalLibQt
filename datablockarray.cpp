@@ -1,10 +1,11 @@
 #include "datablockarray.h"
 
-DataBlockArray::DataBlockArray(QString name, int frequency, int persecond)
+DataBlockArray::DataBlockArray(QString name, int frequency, int persecond, QString unit)
   : QList<Parameter>()
   , name(name)
   , frequency(frequency)
-  , persecond(persecond) {}
+  , persecond(persecond)
+  , unit(unit) {}
 
 void DataBlockArray::setData(QVector<Parameter*> data) {
 }

@@ -4,6 +4,7 @@
 #include "GlobalLib_global.h"
 #include <QFile>
 #include <QDateTime>
+#include <QStringDecoder>
 
 class GLOBALLIB_EXPORT File : public QFile
 {
@@ -40,7 +41,14 @@ protected:
   short read_short(const qint64 count = 2);
 
 private:
-  QStringDecoder decoder = QStringDecoder(QStringConverter::System); // Or "Windows-1251"
+#if defined(Q_OS_WIN)
+  QStringDecoder decoder = QStringDecoder(QStringConverter::System);
+#elif defined(Q_OS_LINUX)
+    QStringDecoder decoder = QStringDecoder("Windows-1251");
+#elif defined(Q_OS_MAC)
+  QStringDecoder decoder = QStringDecoder("Windows-1251");
+#endif
+
 };
 
 #endif // FILE_H

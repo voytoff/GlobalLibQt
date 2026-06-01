@@ -1,6 +1,6 @@
 #include "file.h"
 #include <QTimeZone>
-#include <qendian.h>
+#include <QtEndian>
 
 File::File(const QString &name) : QFile(name) {
   if (exists() && open(QIODevice::ReadOnly)) {
@@ -17,6 +17,7 @@ QByteArray File::readExt(const qint64 position, const qint64 count) {
 } // readExt
 
 QString File::read_string(const qint64 count) {
+  QTextStream in(this);
   QByteArray data = read(count);
   QString text = decoder(data);
   return text.trimmed().remove(QChar('\0'));

@@ -43,7 +43,7 @@ QDateTime toOleTime(const QByteArray &data) {
     return QDateTime();
   double oleValue;
   std::memcpy(&oleValue, data.constData(), sizeof(double));
-  QDateTime epoch(QDate(1899, 12, 30), QTime(0, 0, 0), Qt::UTC);
+  QDateTime epoch(QDate(1899, 12, 30), QTime(0, 0, 0), QTimeZone::utc());
   qint64 msecs = static_cast<qint64>(oleValue * 86400000.0);
   return epoch.addMSecs(msecs);
 }

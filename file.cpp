@@ -26,7 +26,6 @@ QString File::get_string(const qint64 count) {
   text.remove(QRegularExpression("[\\r\\n\\0]+$"));
   return text;
 } // read_string
-
 QDateTime File::get_date(const qint64 count) {
   return lib::toDate(read(count));
 } // get_date

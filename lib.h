@@ -5,8 +5,13 @@
 #include "parameter.h"
 #include <QString>
 #include <QStringList>
+#include <QList>
 
 namespace lib {
+template <typename T>
+GLOBALLIB_EXPORT int indexOf(QList<T*> list, std::function<bool (const T *)> &predicate);
+template <typename T>
+GLOBALLIB_EXPORT T* find(QList<T*> list, std::function<bool (const T *)> &predicate);
 GLOBALLIB_EXPORT int endsWith(QStringList list, QString value);
 GLOBALLIB_EXPORT double round(double value, int digits);
 GLOBALLIB_EXPORT double avg(QList<double> array);

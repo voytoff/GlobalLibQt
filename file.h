@@ -6,8 +6,7 @@
 #include <QDateTime>
 #include <QStringDecoder>
 
-class GLOBALLIB_EXPORT File : public QFile
-{
+class GLOBALLIB_EXPORT File : public QFile {
 public:
   File(const QString &name);
 
@@ -17,28 +16,31 @@ public:
   template <typename T> inline T get(const qint64 count) {
     T result;
     if constexpr (std::is_same_v<T, QString>)
-      result = read_string(count);
+      result = get_string(count);
     else if constexpr (std::is_same_v<T, QDateTime>)
-      result = read_date(count);
+      result = get_date(count);
     else if constexpr (std::is_same_v<T, double>)
-      result = read_double(count);
+      result = get_double(count);
+    else if constexpr (std::is_same_v<T, float>)
+      result = get_float(count);
     else if constexpr (std::is_same_v<T, int>)
-      result = read_int(count);
+      result = get_int(count);
     else if constexpr (std::is_same_v<T, ulong>)
-      result = read_ulong(count);
+      result = get_ulong(count);
     else if constexpr (std::is_same_v<T, short>)
-      result = read_short(count);
+      result = get_short(count);
     else result = T();
     return result;
   }
 
 protected:
-  QString read_string(const qint64 count);
-  QDateTime read_date(const qint64 count = 8);
-  double read_double(const qint64 count = 8);
-  int read_int(const qint64 count = 8);
-  ulong read_ulong(const qint64 count = 8);
-  short read_short(const qint64 count = 2);
+  QString get_string(const qint64 count);
+  QDateTime get_date(const qint64 count = 8);
+  double get_double(const qint64 count = 8);
+  double get_float(const qint64 count = 4);
+  int get_int(const qint64 count = 4);
+  ulong get_ulong(const qint64 count = 8);
+  short get_short(const qint64 count = 2);
 
 private:
 #if defined(Q_OS_WIN)

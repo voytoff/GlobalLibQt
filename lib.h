@@ -16,6 +16,9 @@ GLOBALLIB_EXPORT QDateTime toDate(const QByteArray &data);
 GLOBALLIB_EXPORT QDateTime toOleTime(const QByteArray &data);
 GLOBALLIB_EXPORT double toDouble(const QByteArray &data);
 GLOBALLIB_EXPORT float toFloat(const QByteArray &data);
+GLOBALLIB_EXPORT int toInt(const QByteArray &data);
+GLOBALLIB_EXPORT ulong toULong(const QByteArray &data);
+GLOBALLIB_EXPORT short toShort(const QByteArray &data);
 };
 
 #endif // LIB_H

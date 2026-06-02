@@ -47,6 +47,7 @@ QDateTime toOleTime(const QByteArray &data) {
   qint64 msecs = static_cast<qint64>(oleValue * 86400000.0);
   return epoch.addMSecs(msecs);
 }
+
 double toDouble(const QByteArray &data) {
   if (data.size() < sizeof(double))
     return double();
@@ -59,6 +60,27 @@ float toFloat(const QByteArray &data) {
     return float();
   float result;
   std::memcpy(&result, data.constData(), 4);
+  return result;
+}
+int toInt(const QByteArray &data) {
+  if (data.size() < sizeof(int))
+    return int();
+  int result;
+  std::memcpy(&result, data.constData(), sizeof(int));
+  return result;
+}
+ulong toULong(const QByteArray &data) {
+  if (data.size() < sizeof(ulong))
+    return ulong();
+  ulong result;
+  std::memcpy(&result, data.constData(), sizeof(unsigned long));
+  return result;
+}
+short toShort(const QByteArray &data) {
+  if (data.size() < sizeof(short))
+    return short();
+  ulong result;
+  memcpy(&result, data.constData(), sizeof(short));
   return result;
 }
 

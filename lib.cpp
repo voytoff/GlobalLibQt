@@ -1,6 +1,8 @@
 #include "lib.h"
 #include <qendian.h>
 #include <QTimeZone>
+#include <QString>
+#include <QRegularExpression>
 
 namespace lib {
 
@@ -40,6 +42,12 @@ double increment(int persecond, double &index, int digits) {
   index += lib::round(1.0 / persecond, digits);
   index = lib::round(index, 3);
   return result;
+}
+
+QString &trim(QString &text) {
+  text.remove(QRegularExpression("^\\s+"));
+  text.remove(QRegularExpression("[\\r\\n\\0]+$"));
+  return text;
 }
 
 QDateTime toDate(const QByteArray &data) {

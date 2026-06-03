@@ -14,12 +14,12 @@ add_library(GlobalLib SHARED
   GlobalLib_global.h
   globallib.h globallib.cpp
   lib.h lib.cpp
-  iexpobject.h
-  ichannelarray.h
-  ichannelblock.h
   parameter.h parameter.cpp
   file.cpp file.h
   datablockarray.cpp datablockarray.h
+  isensorconverter.h
+  qtdynamometer.h qtdynamometer.cpp
+  interfacefactory.h interfacefactory.cpp
   #channelblock.cpp channelblock.h
 )
 

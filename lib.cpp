@@ -6,17 +6,6 @@
 
 namespace lib {
 
-template <typename T>
-int indexOf(QList<T*> list, std::function<bool (const T *)> &predicate) {
-  auto it = std::find_if(list.begin(), list.end(), predicate);
-  return (it != list.end()) ? std::distance(list.begin(), it) : -1;
-}
-template <typename T>
-T* find(QList<T*> list, std::function<bool (const T *)> &predicate) {
-  auto it = std::find_if(list.begin(), list.end(), predicate);
-  return it.value();
-}
-
 int endsWith(QStringList list, QString value) {
   auto it = std::find_if(list.begin(), list.end(), [=](const QString &s) {
     return s.endsWith(value);
